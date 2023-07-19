@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="StoreList"></div>
+
+    <div id="Cart"></div>
+
+    <script src="StoreList.js"></script>
+    <script src="Cart.js"></script>
+    <script>
+      var StoreList = Elm.StoreList.init({
+        node: document.getElementById("StoreList"),
+      });
+
+      var Cart = Elm.Cart.init({
+        node: document.getElementById("Cart"),
+      });
+
+      StoreList.ports.countOutput.subscribe(function (data) {
+		console.log(data)
+        Cart.ports.countInput.send(data);
+      });
+    </script>
+  </body>
+</html>
